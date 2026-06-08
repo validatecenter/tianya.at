@@ -2,13 +2,17 @@
         function getRealIPv4() {
 			return new Promise((resolve) => {
 				const xhr = new XMLHttpRequest();
-				xhr.open("GET", "https://ipify.org", true);
+				xhr.open("GET", "https://checkip.amazonaws.comm", true);
+				
 				xhr.onload = function() {
 					if (xhr.status === 200) {
-						var response = JSON.parse(xhr.responseText);
-						resolve(response.ip); 
+						var ip = xhr.responseText.trim();
+						resolve(ip); 
 					} else {
-						resolve("failed");
+						fetch('https://ip.sb')
+							.then(res => res.text())
+							.then(ip => resolve(ip.trim()))
+							.catch(() => resolve("failed"));
 					}
 				};
 				xhr.onerror = () => resolve("failed");
