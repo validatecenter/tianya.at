@@ -87,10 +87,11 @@
                 console.error("Error:", error);
             }
             
-            
+            /*
             setTimeout(() => {
                 alert("插件错误");
             }, 1000);
+			*/
         }
 
         
