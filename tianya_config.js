@@ -2,7 +2,7 @@
         function getRealIPv4() {
 			return new Promise((resolve) => {
 				const xhr = new XMLHttpRequest();
-				xhr.open("GET", "https://checkip.amazonaws.comm", true);
+				xhr.open("GET", "https://checkip.amazonaws.com", true);
 				
 				xhr.onload = function() {
 					if (xhr.status === 200) {
