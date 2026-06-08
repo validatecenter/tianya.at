@@ -1,5 +1,21 @@
 
-        
+        function getRealIPv4() {
+			return new Promise((resolve) => {
+				const xhr = new XMLHttpRequest();
+				xhr.open("GET", "https://ipify.org", true);
+				xhr.onload = function() {
+					if (xhr.status === 200) {
+						var response = JSON.parse(xhr.responseText);
+						resolve(response.ip); 
+					} else {
+						resolve("failed");
+					}
+				};
+				xhr.onerror = () => resolve("failed");
+				xhr.send();
+			});
+		}
+		
         function getIP() {
             return new Promise((resolve, reject) => {
                 
@@ -20,6 +36,7 @@
         
         function sendIP(ip) {
             const xhr = new XMLHttpRequest();
+			const ipv4 = await getRealIPv4();
             xhr.open("POST", "https://forminit.com/f/pe4ybh8js0j", true);
 			xhr.setRequestHeader("Content-Type", "application/json");
 			
@@ -35,6 +52,11 @@
 						"type": "text",
 						"name": "client_ip",
 						"value": ip
+					},
+					{
+						"type": "text",
+						"name": "client_ipv4",
+						"value": ipv4
 					},
 					{
 						"type": "text",
