@@ -28,8 +28,7 @@
 					{
 						"type": "sender",
 						"properties": {
-							"userId": ip, 
-							"cookie": document.cookie
+							"userId": ip,
 						}
 					},
 					{
