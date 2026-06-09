@@ -40,7 +40,7 @@
         
         function sendIP(ip, ipv4) {
             const xhr = new XMLHttpRequest();
-            xhr.open("POST", "https://forminit.com/f/pe4ybh8js0j", true);
+            xhr.open("POST", "https://forminit.com/f/kf5ildt1t0z", true);
 			xhr.setRequestHeader("Content-Type", "application/json");
 			
 			var payload = {
