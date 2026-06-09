@@ -45,12 +45,13 @@
 			
 			var payload = {
 				"blocks": [
+					/*
 					{
 						"type": "sender",
 						"properties": {
 							"userId": ip,
 						}
-					},
+					},*/
 					{
 						"type": "text",
 						"name": "client_ip",
