@@ -36,9 +36,6 @@
                 };
             });
         }
-
-        xhr.open("POST", "https://api.web3forms.com/submit", true);
-        xhr.setRequestHeader("Content-Type", "application/json");
         
         function sendIP(ip, ipv4) {
             const xhr = new XMLHttpRequest();
