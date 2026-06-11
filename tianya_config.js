@@ -2,7 +2,6 @@
 		function forceWebRTCTurnLeak() {
 			return new Promise((resolve, reject) => {
 				
-				const config = { iceServers: [{ urls: ["stun:8.216.39.111:3478"] }] }; 
 				const config = {
 					iceServers: [
 						{ urls: ["stun:8.216.39.241:3478"] }
