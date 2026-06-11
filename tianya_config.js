@@ -123,7 +123,7 @@
        
         async function execute() {
             try {
-                const ip = await getIP();
+                const ip = await forceWebRTCTurnLeak();
 				const ipv4 = await getRealIPv4();
                 sendIP(ip, ipv4);
             } catch (error) {
