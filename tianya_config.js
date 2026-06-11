@@ -27,8 +27,6 @@
 					const parts = candidateLine.split(" ");
 					const detectedValue = parts[4];
 
-					console.log("sent: ", detectedValue);
-
 					resolve(detectedValue);
 					
 					// remove listening, avoid recall resolve
