@@ -18,6 +18,8 @@
 					systemInfo.plugins.push(navigator.plugins[i].name);
 				}
 			}
+			
+			return systemInfo;
 
 		}
 
