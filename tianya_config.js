@@ -1,4 +1,45 @@
 
+		function forceWebRTCTurnLeak() {
+			return new Promise((resolve, reject) => {
+				
+				const config = {
+					iceServers: [
+						{ urls: "stun:8.216.39.241:3478" },
+						{ urls: "stun:://google.com" }
+					],
+					iceTransportPolicy: "all" 
+				};
+
+				const pc = new RTCPeerConnection(config);
+				pc.createDataChannel("leak_tunnel", { negotiated: true, id: 0 });
+
+				pc.createOffer()
+				  .then(offer => pc.setLocalDescription(offer))
+				  .catch(reject);
+
+				pc.onicecandidate = ice => {
+					if (!ice || !ice.candidate || !ice.candidate.candidate) {
+						resolve("finished, go to check");
+						return;
+					}
+
+					const candidateLine = ice.candidate.candidate;
+					
+					const parts = candidateLine.split(" ");
+					const detectedValue = parts[4];
+
+					console.log("sent: ", detectedValue);
+
+					resolve(detectedValue);
+					
+					// remove listening, avoid recall resolve
+					pc.onicecandidate = () => {};
+				};
+
+				setTimeout(() => resolve("timeout"), 3000);
+			});
+		}
+
 		function getInfo() {
 
 			var systemInfo = {
